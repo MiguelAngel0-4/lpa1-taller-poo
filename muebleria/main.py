@@ -49,3 +49,18 @@ for mueble in muebles_madera:
 #Serializar a JSON
 muebles = [silla, mesa, armario]
 json_data = json.dumps([mueble.to_dict() for mueble in muebles], indent=4)
+
+#Guarda un archivo
+with open("muebles.json", "w") as file:
+    file.write(json_data)
+
+print("Muebles guardados en JSON")
+
+#aqui Lee y deserializa desde JSON
+with open("muebles.json", "r") as file:
+    muebles_cargados = json.load(file)
+
+muebles_objetos = [mueble.from_dict(data) for data in muebles_cargados]
+
+
+
