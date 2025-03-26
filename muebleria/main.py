@@ -62,5 +62,8 @@ with open("muebles.json", "r") as file:
 
 muebles_objetos = [mueble.from_dict(data) for data in muebles_cargados]
 
-
+#muestra muebles agregados
+print("\nMuebles cargados desde JSON:")
+for mueble in muebles_objetos:
+    print(mueble)
 
