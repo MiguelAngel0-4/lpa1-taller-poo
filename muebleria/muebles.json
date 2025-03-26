@@ -1,0 +1,20 @@
+[
+    {
+        "tipo": "Silla",
+        "material": "Madera",
+        "precio": 100,
+        "num_patas": 4
+    },
+    {
+        "tipo": "Mesa",
+        "material": "Vidrio",
+        "precio": 200,
+        "forma": "Redonda"
+    },
+    {
+        "tipo": "Armario",
+        "material": "Metal",
+        "precio": 500,
+        "num_cajones": 3
+    }
+]
