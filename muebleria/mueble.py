@@ -18,3 +18,16 @@ class Mueble(ABC):
         return f"""--- {self.__class__.__name__} ---
 material {self._material}
 precio {self._precio}"""
+    
+class Silla(Mueble):
+    def __init__(self, material: str, precio: float, num_patas: int):
+        #Llama al constructor de Mueble
+        super().__init__(material, precio)
+        # Nuevo atributo de Silla
+        self.num_patas= num_patas
+
+    def calcu_preciof(self) -> float:
+        #Precio con 10% de margen
+        return self._precio * 1.1  
+    def __str__(self):
+        return super().__str__() + f"\nNumero de Patas: {self.num_patas}"
