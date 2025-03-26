@@ -49,3 +49,23 @@ def cargar_muebles():
     except FileNotFoundError:
         print("No se encontro el archivo 'muebles.json'.")
 
+#configuracion argparse para la CLI
+parser = argparse.ArgumentParser(description="Sistema de Gestion de Muebles")
+subparsers = parser.add_subparsers(dest="comando")
+
+#Comando para agregar muebles
+parser_agregar = subparsers.add_parser("agregar", help="Agregar un mueble")
+parser_agregar.add_argument("tipo", choices=["silla", "mesa", "armario"], help="Tipo de mueble")
+parser_agregar.add_argument("material", help="Material del mueble")
+parser_agregar.add_argument("precio", help="Precio del mueble")
+parser_agregar.add_argument("extra", help="Número de patas (silla), forma (mesa) o número de cajones (armario)")
+
+#comando para mostrar muebles
+parser_mostrar = subparsers.add_parser("mostrar", help="Mostrar todos los muebles")
+
+#Comando para guardar muebles en JSON
+parser_guardar = subparsers.add_parser("guardar", help="Guardar muebles en un archivo JSON")
+
+#Comando para cargar muebles desde JSON
+parser_cargar = subparsers.add_parser("cargar", help="Cargar muebles desde un archivo JSON")
+
