@@ -26,4 +26,4 @@ table.add_row("Silla", silla._material, f"${silla._precio:.2f}", f"${silla.calcu
 table.add_row("Mesa", mesa._material, f"${mesa._precio:.2f}", f"${mesa.calcu_preciof():.2f}")
 table.add_row("Armario", armario._material, f"${armario._precio:.2f}", f"${armario.calcu_preciof():.2f}")
 
-
+Console.print(table)
