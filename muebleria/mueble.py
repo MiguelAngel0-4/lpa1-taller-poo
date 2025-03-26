@@ -43,3 +43,13 @@ class Mesa(Mueble):
     def __str__(self):
         return super().__str__() + f"\nForma: {self.forma}"
     
+class Armario(Mueble):
+    def __init__(self, material: str, precio: float, num_cajones: int):
+        super().__init__(material, precio)
+        self.num_cajones=num_cajones
+    
+    def calcu_preciof(self)-> float:
+        #Precio con 20% de margen
+        return self._precio * 1.2
+    def __str__(self):
+        return super().__str__() + f"\nNumero de cajones: {self.num_cajones}"
