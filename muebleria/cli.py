@@ -35,7 +35,7 @@ def mostrar_muebles():
 def guardar_muebles():
     #Guarda la lista de muebles en un archivo JSON
     with open("muebles.json", "w") as file:
-        json.dump([mueble.to_dict() for mueble in muebles], file, indent=4)
+        json.dump([Mueble.to_dict() for mueble in muebles], file, indent=4)
     print("Muebles guardados en 'muebles.json'.")
 
 def cargar_muebles():
@@ -44,10 +44,15 @@ def cargar_muebles():
     try:
         with open("muebles.json", "r") as file:
             data = json.load(file)
+            if not isinstance(data, list):  # Verifica que los datos sean una lista
+                raise ValueError("El archivo JSON tiene un formato incorrecto.")
+            
             muebles = [Mueble.from_dict(item) for item in data]
         print("Muebles cargados desde 'muebles.json'.")
     except FileNotFoundError:
         print("No se encontro el archivo 'muebles.json'.")
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"Error al cargar muebles: {e}")
 
 #configuracion argparse para la CLI
 parser = argparse.ArgumentParser(description="Sistema de Gestion de Muebles")
@@ -57,7 +62,7 @@ subparsers = parser.add_subparsers(dest="comando")
 parser_agregar = subparsers.add_parser("agregar", help="Agregar un mueble")
 parser_agregar.add_argument("tipo", choices=["silla", "mesa", "armario"], help="Tipo de mueble")
 parser_agregar.add_argument("material", help="Material del mueble")
-parser_agregar.add_argument("precio", help="Precio del mueble")
+parser_agregar.add_argument("precio", type=float, help="Precio del mueble")
 parser_agregar.add_argument("extra", help="Número de patas (silla), forma (mesa) o número de cajones (armario)")
 
 #comando para mostrar muebles

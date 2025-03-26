@@ -1,12 +1,12 @@
 # ejecutar el programa y probar las clases
 import json
 #importamos las subclases de mueble.py
-from mueble import Silla, Mesa, Armario
+from mueble import Silla, Mesa, Armario, Mueble
 from rich.console import Console
 from rich.table import Table
 
 #creacion consola formateada
-Console = Console()
+console = Console()
 
 #instanciar muebles
 silla = Silla("Madera", 100, 4)
@@ -27,7 +27,7 @@ table.add_row("Silla", silla._material, f"${silla._precio:.2f}", f"${silla.calcu
 table.add_row("Mesa", mesa._material, f"${mesa._precio:.2f}", f"${mesa.calcu_preciof():.2f}")
 table.add_row("Armario", armario._material, f"${armario._precio:.2f}", f"${armario.calcu_preciof():.2f}")
 
-Console.print(table)
+console.print(table)
 
 from inventario import Inventario #importancion de inventario
 
@@ -60,7 +60,7 @@ print("Muebles guardados en JSON")
 with open("muebles.json", "r") as file:
     muebles_cargados = json.load(file)
 
-muebles_objetos = [mueble.from_dict(data) for data in muebles_cargados]
+muebles_objetos = [Mueble.from_dict(data) for data in muebles_cargados]
 
 #muestra muebles agregados
 print("\nMuebles cargados desde JSON:")
