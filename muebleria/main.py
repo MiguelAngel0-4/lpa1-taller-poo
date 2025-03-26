@@ -27,3 +27,20 @@ table.add_row("Mesa", mesa._material, f"${mesa._precio:.2f}", f"${mesa.calcu_pre
 table.add_row("Armario", armario._material, f"${armario._precio:.2f}", f"${armario.calcu_preciof():.2f}")
 
 Console.print(table)
+
+from inventario import Inventario #importancion de inventario
+
+inventario = Inventario()
+inventario.agregar_mueble(silla)
+inventario.agregar_mueble(mesa)
+inventario.agregar_mueble(armario)
+
+#Mostra los muebles del inventario
+print("\n Inventario de la muebleria:")
+inventario.listar_muebles()
+
+#Busqueda de muebles por material
+muebles_madera = inventario.buscar_por_material("Madera")
+print("\n Muebles de madera encontrados:")
+for mueble in muebles_madera:
+    print(mueble)
