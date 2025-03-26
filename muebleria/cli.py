@@ -69,3 +69,17 @@ parser_guardar = subparsers.add_parser("guardar", help="Guardar muebles en un ar
 #Comando para cargar muebles desde JSON
 parser_cargar = subparsers.add_parser("cargar", help="Cargar muebles desde un archivo JSON")
 
+#Para Ejecutar la CLI
+args = parser.parse_args()
+
+if args.comando == "agregar":
+    agregar_mueble(args.tipo, args.material, args.precio, args.extra)
+elif args.comando == "mostrar":
+    mostrar_muebles()
+elif args.comando == "guardar":
+    guardar_muebles()
+elif args.comando == "cargar":
+    cargar_muebles()
+else:
+    parser.print_help()
+
