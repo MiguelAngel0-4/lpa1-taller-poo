@@ -1,4 +1,5 @@
 # ejecutar el programa y probar las clases
+import json
 #importamos las subclases de mueble.py
 from mueble import Silla, Mesa, Armario
 from rich.console import Console
@@ -44,3 +45,7 @@ muebles_madera = inventario.buscar_por_material("Madera")
 print("\n Muebles de madera encontrados:")
 for mueble in muebles_madera:
     print(mueble)
+"""-------------------------------------------------"""
+#Serializar a JSON
+muebles = [silla, mesa, armario]
+json_data = json.dumps([mueble.to_dict() for mueble in muebles], indent=4)
