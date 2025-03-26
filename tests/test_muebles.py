@@ -1,16 +1,16 @@
 # pruebas unitarias utilizando pytest
 #importamos las subclases y pytest
 import pytest
-from muebleria.main import Silla, Mesa, Armario
+from muebleria.mueble import Silla, Mesa, Armario
 
 #tests
 def test_silla_precio():
     silla = Silla("Madera", 100.0, 4)  #Creamos una silla con precio 100.0
-    assert silla.calcu_preciof() == 110.0  #Verificacion
+    assert round(silla.calcu_preciof(), 2) == 110.0  #Verificacion
 
 def test_mesa_precio():
     mesa = Mesa("Metal", 200.0, "Redonda")  #mesa con precio 200.0
-    assert mesa.calcu_preciof() == 230.0  #precio final debería ser 230.0
+    assert round(mesa.calcu_preciof(), 2) == 230.0  #precio final debería ser 230.0
 
 def test_armario_precio():
     armario = Armario("Plástico", 300.0, 5)  #armario con precio 300.0
