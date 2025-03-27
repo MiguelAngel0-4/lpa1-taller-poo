@@ -6,11 +6,11 @@ from mueble import Silla, Mesa, Armario, Mueble
 muebles = []
 
 def cargar_muebles():
-    """Carga muebles desde un archivo JSON."""
     global muebles
     try:
         with open("muebles.json", "r") as file:
             data = json.load(file)
+            print("Contenido de muebles.json:", data)  #Depuración
             muebles = [Mueble.from_dict(item) for item in data]
         print("Muebles cargados desde 'muebles.json'.")
     except FileNotFoundError:
@@ -19,7 +19,7 @@ def cargar_muebles():
         print("Error al leer el archivo JSON.")
 
 def agregar_mueble(tipo, material, precio, extra):
-    """Agrega un nuevo mueble a la lista en memoria."""
+    #Agrega un nuevo mueble a la lista en memoria
     precio = float(precio)
     
     if tipo == "silla":
